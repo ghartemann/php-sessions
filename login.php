@@ -1,4 +1,22 @@
-<?php require 'inc/head.php'; ?>
+<?php
+
+if (!empty($_POST)) {
+    // On ouvre la session
+    session_start();
+
+    // On enregistre le login en session
+    $_SESSION['login'] = $_POST['loginname'];
+
+    // On redirige vers le fichier admin.php
+    header('Location: /index.php');
+    exit();
+} else {
+    $errorMessage = 'Veuillez entrer un login';
+}
+
+require 'inc/head.php';
+
+?>
 <div class="container" style="margin-top:40px">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -11,9 +29,7 @@
                         <fieldset>
                             <div class="row">
                                 <div class="center-block">
-                                    <img class="profile-img"
-                                         src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
-                                         alt="">
+                                    <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" alt="">
                                 </div>
                             </div>
                             <div class="row">
@@ -21,10 +37,9 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                              <i class="glyphicon glyphicon-user"></i>
+                                                <i class="glyphicon glyphicon-user"></i>
                                             </span>
-                                            <input class="form-control" placeholder="Username" name="loginname"
-                                                   type="text" autofocus>
+                                            <input class="form-control" placeholder="Username" name="loginname" type="text" autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group">
